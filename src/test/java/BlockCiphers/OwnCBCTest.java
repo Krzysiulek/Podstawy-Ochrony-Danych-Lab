@@ -1,6 +1,5 @@
 package BlockCiphers;
 
-import Utils.XorUtils;
 import org.junit.Test;
 
 import javax.crypto.BadPaddingException;
@@ -9,9 +8,8 @@ import javax.crypto.NoSuchPaddingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
-import java.util.List;
 
-public class CBCTest {
+public class OwnCBCTest {
 
     @Test
     public void ownCBCTest() throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, IllegalBlockSizeException {
@@ -22,12 +20,12 @@ public class CBCTest {
         System.out.println(Arrays.toString(byteMessage));
         System.out.println();
 
-        CBC cbc = new CBC();
+        OwnCBC cbc = new OwnCBC();
         byte[] enc = cbc.encrypt(byteMessage);
         System.out.println("Encrypted:");
         System.out.println(Arrays.toString(enc));
 
-        cbc = new CBC();
+        cbc = new OwnCBC();
         byte[] dec = cbc.decrypt(enc);
         System.out.println("Decrypted");
         System.out.println(Arrays.toString(dec));
@@ -35,7 +33,7 @@ public class CBCTest {
 
     @Test
     public void getterTest() throws NoSuchPaddingException, NoSuchAlgorithmException {
-        CBC cbc = new CBC();
+        OwnCBC cbc = new OwnCBC();
         String message = "mnbvcxzasdfghjklbdghfjkirsdfkxcb";
         byte[] byteArray = message.getBytes();
         System.out.println(Arrays.toString(byteArray));

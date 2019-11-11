@@ -8,7 +8,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
-public class ECB extends MyCipher implements BlockCipher {
+public class ECB extends MyCipher {
     SecretKeySpec secretKey;
 
     public ECB() throws NoSuchPaddingException, NoSuchAlgorithmException {
