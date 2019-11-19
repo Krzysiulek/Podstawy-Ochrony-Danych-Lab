@@ -27,6 +27,7 @@ public class ECBTest {
 
         System.out.println("Decrypted:");
         System.out.println(Arrays.toString(decrypted));
+        System.out.println(new String(decrypted));
 
         Assert.assertEquals(Arrays.toString(textToEncrypt.getBytes()), Arrays.toString(decrypted));
     }

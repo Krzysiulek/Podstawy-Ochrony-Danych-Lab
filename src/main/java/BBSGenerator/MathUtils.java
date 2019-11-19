@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class BBSGeneratorUtils {
+public class MathUtils {
 
     public static boolean isCongruent(long a, long b, long n) {
         return (a - b) % n == 0;

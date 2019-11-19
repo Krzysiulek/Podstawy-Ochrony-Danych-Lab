@@ -1,5 +1,6 @@
 package BlockCiphers;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import javax.crypto.BadPaddingException;

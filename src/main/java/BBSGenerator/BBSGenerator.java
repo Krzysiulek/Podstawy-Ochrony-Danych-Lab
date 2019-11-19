@@ -14,12 +14,12 @@ public class BBSGenerator {
     private List<Long> uList;
 
     public BBSGenerator() {
-        List<Integer> primeNumbers = BBSGeneratorUtils.getListOfPrimeNumbers(1000000);
+        List<Integer> primeNumbers = MathUtils.getListOfPrimeNumbers(1000000);
 
-        Long p = BBSGeneratorUtils
+        Long p = MathUtils
                 .getCongurentPrimeNumbersInRange(primeNumbers);
 
-        Long q = BBSGeneratorUtils
+        Long q = MathUtils
                 .getCongurentPrimeNumbersInRange(primeNumbers);
 
         blumNumber = p * q;
@@ -53,7 +53,7 @@ public class BBSGenerator {
         while (true) {
             long seed = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
 
-            if (BBSGeneratorUtils.NWD(seed, blumNumber) == 1)
+            if (MathUtils.NWD(seed, blumNumber) == 1)
             {
                 x = seed;
                 break;
