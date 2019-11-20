@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.List;
 
 public class RSATest {
 
@@ -41,7 +42,7 @@ public class RSATest {
         final long p = 8461;
         final long q = 9767;
 
-        final String message = "hej";
+        final String message = "To jest bardzo wazna wiadomosc, ale to bardzo wazna wiadomosc";
         RSA rsaToGenerate = new RSA(BigInteger.valueOf(p), BigInteger.valueOf(q));
 
         PrivateKey privateKey = rsaToGenerate.getPrivateKey();
@@ -56,5 +57,39 @@ public class RSATest {
         System.out.println(Arrays.toString(message.getBytes()));
         System.out.println(Arrays.toString(decrypted));
         Assert.assertEquals(message, new String(decrypted));
+    }
+
+    @Test
+    public void dupa() {
+        final long p = 8461;
+        final long q = 9767;
+
+        final String message = "To jest bardzo wazna wiadomosc, ale to bardzo wazna wiadomosc";
+        RSA rsaToGenerate = new RSA(BigInteger.valueOf(p), BigInteger.valueOf(q));
+
+        PrivateKey privateKey = rsaToGenerate.getPrivateKey();
+        PublicKey publicKey = rsaToGenerate.getPublicKey();
+
+        List<byte[]> encryptByteByByte = RSA.encryptByteByByte(message.getBytes(), publicKey);
+
+        byte[] decrypted = RSA.decryptByteByByte(encryptByteByByte, privateKey);
+        System.out.println(new String(decrypted));
+    }
+
+    @Test
+    public void encryptingAndDecryptingByBlocks() {
+        final long p = 20549;
+        final long q = 6619;
+
+        final String message = "To jest bardzo wazna wiadomosc, ale to bardzo wazna wiadomosc";
+        RSA rsaToGenerate = new RSA(BigInteger.valueOf(p), BigInteger.valueOf(q));
+
+        PrivateKey privateKey = rsaToGenerate.getPrivateKey();
+        PublicKey publicKey = rsaToGenerate.getPublicKey();
+
+        List<byte[]> encrypted = RSA.encryptByBlocks(message.getBytes(), publicKey);
+
+        byte[] decryted = RSA.decryptByBlocks(encrypted, privateKey);
+        System.out.println(new String(decryted));
     }
 }
