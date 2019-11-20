@@ -66,8 +66,6 @@ public class RSATest {
 
         final String message = "To jest bardzo wazna wiadomosc, ale to bardzo wazna wiadomosc";
         RSA rsa = new RSA(BigInteger.valueOf(p), BigInteger.valueOf(q));
-        // lub:
-        // RSA rsa = new RSA();
 
         PrivateKey privateKey = rsa.getPrivateKey();
         PublicKey publicKey = rsa.getPublicKey();
