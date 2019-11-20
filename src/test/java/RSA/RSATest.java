@@ -60,15 +60,17 @@ public class RSATest {
     }
 
     @Test
-    public void dupa() {
+    public void encryptingAndSignBySign() {
         final long p = 8461;
         final long q = 9767;
 
         final String message = "To jest bardzo wazna wiadomosc, ale to bardzo wazna wiadomosc";
-        RSA rsaToGenerate = new RSA(BigInteger.valueOf(p), BigInteger.valueOf(q));
+        RSA rsa = new RSA(BigInteger.valueOf(p), BigInteger.valueOf(q));
+        // lub:
+        // RSA rsa = new RSA();
 
-        PrivateKey privateKey = rsaToGenerate.getPrivateKey();
-        PublicKey publicKey = rsaToGenerate.getPublicKey();
+        PrivateKey privateKey = rsa.getPrivateKey();
+        PublicKey publicKey = rsa.getPublicKey();
 
         List<byte[]> encryptByteByByte = RSA.encryptByteByByte(message.getBytes(), publicKey);
 
