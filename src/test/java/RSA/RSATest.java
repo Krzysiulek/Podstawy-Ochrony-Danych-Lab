@@ -1,11 +1,13 @@
 package RSA;
 
+import Utils.TimeCounter;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class RSATest {
 
@@ -88,8 +90,64 @@ public class RSATest {
         PublicKey publicKey = rsaToGenerate.getPublicKey();
 
         List<byte[]> encrypted = RSA.encryptByBlocks(message.getBytes(), publicKey);
-
         byte[] decryted = RSA.decryptByBlocks(encrypted, privateKey);
+
         System.out.println(new String(decryted));
+    }
+
+    @Test
+    public void timeCount() {
+        countTimeForEncrypt(10);
+        countTimeForEncrypt(100);
+        countTimeForEncrypt(1000);
+        countTimeForEncrypt(10000);
+        countTimeForEncrypt(100000);
+        countTimeForEncrypt(1000000);
+    }
+
+    private byte[] getRandomBytes(int size) {
+        byte[] randomByteArray = new byte[size];
+        new Random().nextBytes(randomByteArray);
+
+        return randomByteArray;
+    }
+
+    private void countTimeForEncrypt(int n) {
+        final int bytesAmountToTest = n;
+        final double iterations = 100.0;
+        TimeCounter timeCounter = new TimeCounter();
+        final long p = 8461;
+        final long q = 9767;
+        byte[] randomBytes = getRandomBytes(bytesAmountToTest);
+//        RSA rsa = new RSA(BigInteger.valueOf(p), BigInteger.valueOf(q));
+        RSA rsa = new RSA();
+
+        PrivateKey privateKey = rsa.getPrivateKey();
+        PublicKey publicKey = rsa.getPublicKey();
+
+        timeCounter.start();
+        for (int i = 0; i < iterations; i++) {
+            RSA.encryptByBlocks(randomBytes, publicKey);
+        }
+        timeCounter.stop();
+
+        System.out.print("Encrypt for " + bytesAmountToTest + " :");
+        System.out.println(timeCounter.getTimeMilis() / iterations + "ms");
+
+        List<byte[]> encrypted = RSA.encryptByBlocks(randomBytes, publicKey);
+
+        timeCounter.start();
+        for (int i = 0; i < iterations; i++) {
+            RSA.decryptByBlocks(encrypted, privateKey);
+        }
+        timeCounter.stop();
+
+        System.out.print("Decrypt for " + bytesAmountToTest + " :");
+        System.out.println(timeCounter.getTimeMilis() / iterations + "ms");
+        System.out.println("\n");
+
+        byte[] decrypted = RSA.decryptByBlocks(encrypted, privateKey);
+//        Assert.assertEquals(new String(randomBytes), new String(decrypted));
+//        return timeCounter.getTimeMilis() / iterations;
     }
 }

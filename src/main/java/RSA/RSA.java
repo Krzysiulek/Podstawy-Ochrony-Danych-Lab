@@ -65,9 +65,9 @@ public class RSA {
     public static byte[] encrypt(byte[] message, PublicKey key) {
         BigInteger integerToEncrypt = new BigInteger(message).modPow(key.getE(), key.getN());
 
-        System.out.println(key.getN());
-        System.out.println(new BigInteger(message));
-        System.out.println(key.getN().compareTo(new BigInteger(message)));
+//        System.out.println(key.getN());
+//        System.out.println(new BigInteger(message));
+//        System.out.println(key.getN().compareTo(new BigInteger(message)));
 
         return integerToEncrypt.toByteArray();
     }
