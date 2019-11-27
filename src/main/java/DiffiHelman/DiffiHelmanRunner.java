@@ -8,6 +8,8 @@ public class DiffiHelmanRunner {
     public static void main(String args[]) {
         BigInteger n = DiffiHelmanUtils.getN();
         BigInteger g = DiffiHelmanUtils.getG(n);
+        System.out.println(n);
+        System.out.println(g + "\n");
 
         BigInteger X;
         BigInteger Y;

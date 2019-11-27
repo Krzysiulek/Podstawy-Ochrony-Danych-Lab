@@ -20,6 +20,10 @@ public class DiffiHelmanUtils {
         return BigInteger.probablePrime(N_BIT_LENGTH, new Random());
     }
 
+    public static BigInteger getN(long n) {
+        return new BigInteger(String.valueOf(n));
+    }
+
     public static BigInteger getG(BigInteger n) {
         return findPrimitive(n);
     }
