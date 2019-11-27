@@ -40,5 +40,11 @@ public class Picture {
         ImageIO.write(bufferedImage, "jpg", file);
     }
 
+    public Pixel getNthPixel(int n) {
+        int x = n / (width + 1);
+        int y = (n - 1) % width;
+
+        return imageArray[x][y];
+    }
 
 }
