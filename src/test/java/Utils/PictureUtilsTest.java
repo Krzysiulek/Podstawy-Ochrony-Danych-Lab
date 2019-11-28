@@ -1,26 +1,37 @@
 package Utils;
 
 import Steganografia.Picture;
+import com.google.common.base.Utf8;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.IOException;
-
-import static org.junit.Assert.*;
+import java.util.Arrays;
 
 public class PictureUtilsTest {
 
     @Test
-    public void saveItd() throws IOException {
+    public void saveItd() throws Exception {
         Picture picture = new Picture();
         picture.loadPicture("/Users/krzysztofczarnecki/Documents/GitHub/POD/src/main/resources/male_zdjecie.jpg");
 
-        picture.savePicture("/Users/krzysztofczarnecki/Documents/GitHub/POD/src/main/resources/crated.jpg");
+        picture.setAllLSBsToOne();
+        picture.setStringIntoPicture("to jest zakodowany tekst");
+        String xd = picture.getStringFromPicture();
 
-        Assert.assertEquals(picture.getImageArray()[0][0], picture.getNthPixel(1));
-        Assert.assertEquals(picture.getImageArray()[0][9], picture.getNthPixel(10));
-        Assert.assertEquals(picture.getImageArray()[2][0], picture.getNthPixel(31));
-        Assert.assertEquals(picture.getImageArray()[9][9], picture.getNthPixel(100));
+        picture.savePicture("/Users/krzysztofczarnecki/Documents/GitHub/POD/src/main/resources/male_zdjecie22.png");
+        System.out.println(xd);
+
+//        System.out.println(Arrays.deepToString(picture.getImageArray()));
+
+        Picture createdPicture = new Picture();
+        createdPicture.loadPicture("/Users/krzysztofczarnecki/Documents/GitHub/POD/src/main/resources/male_zdjecie22.png");
+        String tmp = createdPicture.getStringFromPicture();
+
+        System.out.println(tmp);
     }
 
+    @Test
+    public void xd() {
+
+    }
 }

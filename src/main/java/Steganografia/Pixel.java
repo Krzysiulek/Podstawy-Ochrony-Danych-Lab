@@ -1,8 +1,10 @@
 package Steganografia;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class Pixel {
     private int alpha;
     private int red;
@@ -15,6 +17,8 @@ public class Pixel {
         green = (pixelValue>>8) & 0xff;
         blue = pixelValue & 0xff;
     }
+
+
 
     public int getPixelValue() {
         int p = (alpha<<24) | (red<<16) | (green<<8) | blue;
