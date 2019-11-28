@@ -45,15 +45,15 @@ public class Picture {
 
     /** N value start from 1. */
     public Pixel getNthPixel(int n) {
-        int x = n / (width + 1);
-        int y = (n - 1) % width;
+        int y = n / width;
+        int x = (n - 1) % height;
 
         return imageArray[x][y];
     }
 
     public void setNthPixel(Pixel pixel, int n) {
-        int x = n / (width + 1);
-        int y = (n - 1) % width;
+        int y = n / width;
+        int x = (n - 1) % height;
 
         imageArray[x][y] = pixel;
     }

@@ -5,6 +5,7 @@ import com.google.common.base.Utf8;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class PictureUtilsTest {
@@ -31,7 +32,14 @@ public class PictureUtilsTest {
     }
 
     @Test
-    public void xd() {
+    public void getNthPixel() throws IOException {
+        Picture picture = new Picture();
+        picture.loadPicture("/Users/krzysztofczarnecki/Documents/GitHub/POD/src/main/resources/aaa.jpg");
 
+        picture.getNthPixelTmp(1); //00
+        picture.getNthPixelTmp(5); //04
+        picture.getNthPixelTmp(10); //09
+        picture.getNthPixelTmp(21); //10
+        picture.getNthPixelTmp(31);
     }
 }
