@@ -3,7 +3,6 @@ package Steganografia;
 import Utils.BitUtils;
 import Utils.PictureUtils;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -11,8 +10,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class Picture {
-    @Getter
-    @Setter
     private Pixel[][] imageArray;
 
     @Getter
