@@ -80,6 +80,8 @@ public class Picture {
     }
 
     public void setStringIntoPicture(String value) throws Exception {
+        setAllLSBsToOne();
+
         for (int i = 1; i <= value.length(); i++) {
             setLetterIntoNthPlace(value.charAt(i - 1), i);
         }
