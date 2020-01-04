@@ -18,8 +18,6 @@ public class Pixel {
         blue = pixelValue & 0xff;
     }
 
-
-
     public int getPixelValue() {
         int p = (alpha<<24) | (red<<16) | (green<<8) | blue;
         return p;
