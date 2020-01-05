@@ -21,7 +21,7 @@ public class HashCode {
     private static void printInfo(Supplier runnable, String text, String method) {
         final double repeats = 500;
         String result = (String) runnable.get();
-//        System.out.println(method + " : " + result);
+        System.out.println(method + " : " + result);
 
         TimeCounter counter = new TimeCounter();
 
@@ -30,17 +30,17 @@ public class HashCode {
             runnable.get();
         }
         counter.stop();
-//        System.out.println("Execution time: " + (counter.getTimeMilis() * 1.0 ) / repeats + " ms");
+        System.out.println("Execution time: " + (counter.getTimeMilis() * 1.0 ) / repeats + " ms");
         String tmp = String.valueOf((counter.getTimeMilis() * 1.0 ) / repeats);
         tmp = tmp.replace(".", ",");
         System.out.println(tmp);
 
-//        System.out.println();
+        System.out.println();
     }
 
     private static void tmp(String text) {
-//        System.out.println("Input:" + text);
-//        System.out.println("Input length:" + text.length());
+        System.out.println("Input:" + text);
+        System.out.println("Input length:" + text.length());
         System.out.println(text.length());
 
         printInfo(() -> HashCodeUtils.getHashMD5(text), text, "MD-5");
