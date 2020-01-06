@@ -8,6 +8,6 @@ import java.math.BigInteger;
 @AllArgsConstructor
 @Data
 public class SharePoint {
-    int id;
+    BigInteger id;
     BigInteger pointValue;
 }
