@@ -7,10 +7,11 @@ public class Shamir2Runner {
     public static void main(final String[] args) throws Exception {
         final int t = 2;
         final int n = 4;
+        final int secretInt = 12345;
 
         final Shamir2 shamir = new Shamir2( t, n);
 
-        final BigInteger secret = new BigInteger("1234");
+        final BigInteger secret = new BigInteger(String.valueOf(secretInt));
         final SecretShare[] shares = shamir.split(secret);
         final BigInteger prime = shamir.getP();
 
